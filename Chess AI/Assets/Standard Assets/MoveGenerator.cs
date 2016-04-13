@@ -102,6 +102,7 @@ namespace moveGenerator
                     if (gameBoard[i, j] > 0) // Search for a piece to move
                     {
                         setMoveSet(i, j); // Ask function to set available moves
+                        checkForCheck(i,j);
                         decideBestMoves(); // set the weight of each move
                         for (int h = 0; h < 8; h++)
                         {
@@ -1673,6 +1674,27 @@ namespace moveGenerator
             if (threatArr[kingPos[0], kingPos[1]] == 0) safe = true;
             else safe = false;
             return safe;
+        }
+
+        private void checkForCheck(int i, int j)
+        {
+            double piece = gameBoard[i, j];
+            gameBoard[i, j] = 0;
+            for (int row = 0; row < 8; row++)
+            {
+                for (int col = 0; col < 8; col++)
+                {
+                    if (pieceMoveSet[0][row,col] == 1)
+                    {
+                        gameBoard[row, col] = piece;
+                        if(!kingSafe())
+                        {
+                            pieceMoveSet[0][row, col] = 0;
+                        }
+                    }
+                }
+            }
+            gameBoard[i, j] = piece;
         }
 
         private int pow(int A, int B)
