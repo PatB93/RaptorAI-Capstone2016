@@ -1,14 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp-firstpass.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\bishop.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\moveForAI.js">
     <Files>
-      <File FileName="Assets\Scripts\bishop.js" Line="3" Column="15" />
+      <File FileName="Assets\Scripts\gameManager.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\bishop.js" Line="1" Column="1" />
       <File FileName="Assets\Standard Assets\MoveGenerator.cs" Line="1" Column="1" />
       <File FileName="Assets\Standard Assets\RunAI.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\moveHistory.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\moveForAI.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\gameManager.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\pawn.js" Line="489" Column="1" NotebookId="1" />
+      <File FileName="Assets\Scripts\moveForAI.js" Line="25" Column="83" />
+      <File FileName="Assets\Scripts\pawn.js" Line="181" Column="25" NotebookId="1" />
       <File FileName="Assets\Scripts\king.js" Line="1" Column="1" NotebookId="1" />
       <File FileName="Assets\Standard Assets\TreeLinkList.cs" Line="1" Column="1" NotebookId="1" />
       <File FileName="Assets\Scripts\knight.js" Line="1" Column="1" NotebookId="1" />

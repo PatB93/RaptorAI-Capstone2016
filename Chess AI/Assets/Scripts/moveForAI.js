@@ -59,7 +59,7 @@ function makeMove()
 
     	sender.setEmpty(from);
     	sender.makeArray();
-    	yield;
+    	yield WaitForSeconds (.1);
     	manager.advanceTurn();
 	}
 	else
