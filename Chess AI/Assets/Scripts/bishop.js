@@ -1,5 +1,7 @@
 ﻿#pragma strict
 
+// Test Update
+
 // The gameManager script 
 var manager : gameManager;
 
