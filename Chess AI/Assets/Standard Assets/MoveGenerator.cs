@@ -1,7 +1,7 @@
 ﻿///<summary>
 ///Move Generator Class
 ///Coded By: Patrick Bodell
-///Last Update 4/10/2016
+///Last Update 4/13/2016
 ///Written for Fall 2016 - Capstone Course
 ///Team Members : Paul St. Pierre, Dylan Sheppard, Adam Powell, Garry Cardillo
 ///Instructor : Dr. Farmer
