@@ -1111,7 +1111,7 @@ namespace moveGenerator
 
         public bool kingSafe()
         {
-            bool safe;
+            bool safe = true;
             double[,] boardTemp = new double[8, 8];
             int[] kingPos = new int[2];
             for(int h = 0; h < 8; h++)
@@ -1389,9 +1389,12 @@ namespace moveGenerator
                 }
             }
 
-            if (threatArr[kingPos[0], kingPos[1]] == 0) safe = true;
-            else safe = false;
-            return safe;
+            if (threatArr[kingPos[0], kingPos[1]] == 0) return true;
+            else
+            {
+                print("I am in Check");
+                return safe;
+            }
         }
 
         public bool kingSafe(int kingPosition)
@@ -1684,12 +1687,12 @@ namespace moveGenerator
             {
                 for (int col = 0; col < 8; col++)
                 {
-                    if (pieceMoveSet[0][row,col] == 1)
+                    if (pieceMoveSet[0][row,col] != -1)
                     {
                         gameBoard[row, col] = piece;
                         if(!kingSafe())
                         {
-                            pieceMoveSet[0][row, col] = 0;
+                            pieceMoveSet[0][row, col] = -1;
                         }
                     }
                 }
