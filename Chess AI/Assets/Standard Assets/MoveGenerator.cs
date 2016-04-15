@@ -61,7 +61,7 @@ namespace moveGenerator
                                 //and sends them to the tree by using other functions
         {
             depthCounter = 0; //How many moves past the current move
-            while (depthCounter < 4) // Asks createDepth it iteratively create each level of the tree
+            while (depthCounter < 1) // Asks createDepth it iteratively create each level of the tree
             {
                 createDepth(ref depthCounter);
             }
@@ -103,7 +103,7 @@ namespace moveGenerator
                     {
                         setMoveSet(i, j); // Ask function to set available moves
                         checkForCheck(i,j);
-                        decideBestMoves(); // set the weight of each move
+                        decideBestMoves(i,j); // set the weight of each move
                         for (int h = 0; h < 8; h++)
                         {
                             for (int k = 0; k < 8; k++)
@@ -556,13 +556,14 @@ namespace moveGenerator
         /// 
         /// </summary>
 
-        public void decideBestMoves()
+        public void decideBestMoves(int row, int col)
         {
 			generateThreat ();
             for (int i = 0; i < 7; i++)
             {
                 for (int j = 0; j < 7; j++)
                 {
+                    pieceMoveSet[1][i, j] += i - row;
                     if (pieceMoveSet[0][i, j] == 1) //This is basically saying if there is an attackable piece here...
                     {
                         pieceMoveSet[1][i, j] += gameBoard[i, j] * pow(-1, depthCounter + 1);
@@ -1111,7 +1112,6 @@ namespace moveGenerator
 
         public bool kingSafe()
         {
-            bool safe = true;
             double[,] boardTemp = new double[8, 8];
             int[] kingPos = new int[2];
             for(int h = 0; h < 8; h++)
@@ -1392,8 +1392,7 @@ namespace moveGenerator
             if (threatArr[kingPos[0], kingPos[1]] == 0) return true;
             else
             {
-                print("I am in Check");
-                return safe;
+                return false;
             }
         }
 
@@ -1682,6 +1681,7 @@ namespace moveGenerator
         private void checkForCheck(int i, int j)
         {
             double piece = gameBoard[i, j];
+            double oldVal; //Stores what the space used to be
             gameBoard[i, j] = 0;
             for (int row = 0; row < 8; row++)
             {
@@ -1689,11 +1689,14 @@ namespace moveGenerator
                 {
                     if (pieceMoveSet[0][row,col] != -1)
                     {
+                        oldVal = gameBoard[row, col];
                         gameBoard[row, col] = piece;
                         if(!kingSafe())
                         {
                             pieceMoveSet[0][row, col] = -1;
+                            pieceMoveSet[1][row, col] = 0;
                         }
+                        gameBoard[row, col] = oldVal;
                     }
                 }
             }
