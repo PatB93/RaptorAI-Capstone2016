@@ -1,7 +1,7 @@
 ﻿///<summary>
 ///Tree Link List Class
 ///Coded By: Patrick Bodell
-///Last Update 3/21/2016
+///Last Update 4/15/2016
 ///Written for Fall 2016 - Capstone Course
 ///Team Members : Paul St. Pierre, Dylan Sheppard, Adam Powell, Garry Cardillo
 ///Instructor : Dr. Farmer
@@ -88,6 +88,7 @@ namespace moveGenerator
                                       // guaranteed a move
             Node bestParent = new Node(); // create a container for best move
             Node currentParent = new Node(); // current move we are analyzing
+
             current = root; // start at "You are here"
             for(int rootSize = root.SIZE-1; rootSize >= 0; rootSize--) // find all parents
             {
@@ -163,12 +164,12 @@ namespace moveGenerator
         /// <param name="current"></param>
         /// <param name="bestParent"></param>
         /// <param name="currentParent"></param>
-        private void discoverBestWeight(ref double bestWeight,ref double currentWeight, ref Node current, ref Node bestParent, ref Node currentParent)
+        private void discoverBestWeight(ref double bestWeight, ref double currentWeight, ref Node current, ref Node bestParent, ref Node currentParent)
         {
             currentWeight += current.weight; // add the weight of the node
             if (current.SIZE > 0) // does this node have children?
             {
-                for (int currentSize = current.SIZE-1; currentSize >= 0; currentSize-- ) // check all of the children
+                for (int currentSize = current.SIZE - 1; currentSize >= 0; currentSize--) // check all of the children
                 {
                     if (current.SIZE > 0)
                     {
@@ -180,14 +181,14 @@ namespace moveGenerator
             }
             if (current.SIZE == 0) // Once we get to a leaf we need to see if it is the best path.
             {
-                if(bestWeight < currentWeight) // if the current move is better, use that move
+                if (bestWeight < currentWeight) // if the current move is better, use that move
                 {
                     bestWeight = currentWeight;
                     bestParent = currentParent;
                 }
-                if(bestWeight == currentWeight) // prefer moving lesser pieces to gain equal board position.
+                if (bestWeight == currentWeight) // prefer moving lesser pieces to gain equal board position.
                 {
-                    if(current.piece < bestParent.piece)
+                    if (current.piece < bestParent.piece)
                     {
                         bestWeight = currentWeight;
                         bestParent = currentParent;

@@ -61,7 +61,7 @@ namespace moveGenerator
                                 //and sends them to the tree by using other functions
         {
             depthCounter = 0; //How many moves past the current move
-            while (depthCounter < 1) // Asks createDepth it iteratively create each level of the tree
+            while (depthCounter < 4) // Asks createDepth it iteratively create each level of the tree
             {
                 createDepth(ref depthCounter);
             }
